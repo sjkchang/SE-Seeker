@@ -12,3 +12,4 @@ for i in range(len(data)):
 input()
 response = requests.get(BASE + "internship/0")
 print(response.json())
+ 
