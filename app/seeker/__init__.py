@@ -30,7 +30,9 @@ def create_app(testing):
 
     with app.app_context():
         # Include our routes
-        from . import routes
-        db.create_all()
+        from .routes import home, internship
+        from .models.Internship import Internship
+        # db.drop_all()
+        # db.create_all()
 
         return app
