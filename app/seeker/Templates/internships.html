@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+<div>
+    {% for internship in internships %}
+        <p>
+            {{internship.company}}
+            {{internship.term}}
+            {{internship.year}}
+            {{internship.location}}
+            {{internship.additional_information}}
+        </p>
+    {% endfor %}
+</div>
+
+{% endblock content %}
