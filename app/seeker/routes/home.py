@@ -9,4 +9,5 @@ def home():
     """
     Route for the home page
     """
-    return render_template('home.html')
+    link = "https://www.google.com/"
+    return render_template('home.html', link=link)

@@ -13,12 +13,12 @@ from ..forms.InternshipForm import InternshipForm
 from ..models.Internship import Internship
 
 
-@app.route('/add_internship', methods=['GET', 'POST'])
+@app.route('/add-internship', methods=['GET', 'POST'])
 def add_internship():
     form = InternshipForm()
     if form.validate_on_submit():
         internship = Internship(company=form.company.data, term=form.term.data, year=form.year.data, location=form.location.data,
-                                additional_info=form.additional_information.data)
+                                additional_information=form.additional_information.data)
         db.session.add(internship)
         db.session.commit()
         return redirect(url_for('home'))

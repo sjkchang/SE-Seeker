@@ -32,7 +32,7 @@ def create_app(testing):
         # Include our routes
         from .routes import home, internship
         from .models.Internship import Internship
-        # db.drop_all()
-        # db.create_all()
+        db.drop_all()
+        db.create_all()
 
         return app

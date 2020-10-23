@@ -7,4 +7,4 @@ class Internship(db.Model):
     term = db.Column(db.String(100), index=True, nullable=False)
     year = db.Column(db.Integer, index=True, nullable=False)
     location = db.Column(db.String(100), index=True, nullable=False)
-    additional_info = db.Column(db.String(800), index=True, nullable=False)
+    additional_information = db.Column(db.String(800), index=True, nullable=False)
