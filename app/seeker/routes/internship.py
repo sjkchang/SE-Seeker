@@ -18,7 +18,7 @@ def add_internship():
     form = InternshipForm()
     if form.validate_on_submit():
         internship = Internship(company=form.company.data, term=form.term.data, year=form.year.data, location=form.location.data,
-                                additional_information=form.additional_information.data)
+                                additional_information=form.additional_information.data, link=form.url.data)
         db.session.add(internship)
         db.session.commit()
         return redirect(url_for('home'))

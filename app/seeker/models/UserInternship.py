@@ -1,7 +1,7 @@
 from .. import db
 
 
-class Internship(db.Model):
+class UserInternship(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     company = db.Column(db.String(100), index=True, nullable=False)
     term = db.Column(db.String(100), index=True, nullable=False)

@@ -3,28 +3,31 @@
 <div>
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4 text-navy">Add Internship</legend>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ form.company(placeholder="Company", class="form-control  form-control-sm") }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ form.term(placeholder="term", class="form-control  form-control-sm") }}
-                </div>
-                <div class="form-group">
-                    {{ form.year(placeholder="Year", class="form-control  form-control-sm") }}
+        <fieldset>
+            <legend>Add Internship</legend>
+            <div>
+                <div>
+                    {{ form.company(placeholder="Company") }}
                 </div>
                 <div>
-                    {{ form.location(placeholder="Location", class="form-control  form-control-sm") }}
+                    {{ form.term(placeholder="term") }}
                 </div>
                 <div>
-                    {{ form.additional_information(placeholder="Add Info", class="form-control  form-control-sm") }}
+                    {{ form.year(placeholder="Year") }}
+                </div>
+                <div>
+                    {{ form.location(placeholder="Location") }}
+                </div>
+                <div>
+                    {{ form.additional_information(placeholder="Add Info") }}
+                </div>
+                <div>
+                    {{ form.url(placeholder="URL") }}
                 </div>
         </div>
 
         </fieldset>
-        {{ form.submit(class="btn btn-outline-dark") }}
+        {{ form.submit() }}
     </form>
     </div>
 {% endblock content %}
