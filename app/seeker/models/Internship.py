@@ -7,4 +7,17 @@ class Internship(db.Model):
     term = db.Column(db.String(100), index=True, nullable=False)
     year = db.Column(db.Integer, index=True, nullable=False)
     location = db.Column(db.String(100), index=True, nullable=False)
-    additional_info = db.Column(db.String(800), index=True, nullable=False)
+    additional_information = db.Column(db.String(800), index=True, nullable=False)
+    link = db.Column(db.String(100), index=True, nullable=False)
+
+    @classmethod
+    def create(cls, company, term, year, location, additional_information, link):
+        internship = Internship(company=company, term=term, year=year, location=location, additional_information=additional_information, link=link)
+        db.session.add(internship)
+        db.session.commit()
+
+    @classmethod
+    def delete(cls, id):
+        internship = db.session.query(Internship).filter_by(id=id)
+        db.session.delete(internship)
+        db.session.commit()

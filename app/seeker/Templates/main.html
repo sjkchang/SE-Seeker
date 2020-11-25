@@ -16,21 +16,37 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div>
-                <a href="/home">Home</a>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="/">SE Seeker</a>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/home">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-hover="dropdown">Internships</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a class="dropdown-item" href="/internships">internships</a></li>
+                        <li><a class="dropdown-item" href="/add-internship">add internship</a></li>
+                        <li><a class="dropdown-item" href="#">My Tracker</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/login">Login</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                        <a class="dropdown-item" href="/register">Create New Account</a>
+                    </div>
+                </li>
+            </ul> 
         </nav>
     </header>
-    <main role="main" class="container">
-        <div class="row">
+    <main role="main">
+        <div>
             {% block content %}{% endblock %}
         </div>
     </main>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS ->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
