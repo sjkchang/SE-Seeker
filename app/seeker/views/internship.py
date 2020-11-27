@@ -3,9 +3,10 @@ routes.py
 ====================================
 The url routes that render html templates, and handles forms and database manipulation
 """
-
-
 from __future__ import print_function
+
+import requests
+from bs4 import BeautifulSoup
 from flask import current_app as app
 from flask import render_template, url_for, redirect, flash, request
 from flask_login import login_user, logout_user, current_user, login_required, login_manager

@@ -7,7 +7,7 @@ class Internship(db.Model):
     term = db.Column(db.String(100), index=True, nullable=False)
     year = db.Column(db.Integer, index=True, nullable=False)
     location = db.Column(db.String(100), index=True, nullable=False)
-    additional_information = db.Column(db.String(800), index=True, nullable=False)
+    additional_information = db.Column(db.String(800), index=True, nullable=True)
     link = db.Column(db.String(100), index=True, nullable=False)
 
     @classmethod
@@ -21,3 +21,11 @@ class Internship(db.Model):
         internship = db.session.query(Internship).filter_by(id=id)
         db.session.delete(internship)
         db.session.commit()
+
+    @classmethod
+    def alreadyExists(cls, link):
+        internship = db.session.query(Internship).filter_by(link=link).first()
+        if internship:
+            return True
+        else:
+            return False

@@ -9,7 +9,6 @@ from ..forms.UpdateAccountForm import UpdateAccountForm
 from ..models.User import User
 
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -21,7 +20,6 @@ def login():
         if user and bcrypt.check_password_hash(user.password_hash, form.password.data):
             login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
-        flash('Email or Pasword is invalid', 'error')
     return render_template('login.html', title='login', form=form)
 
 
@@ -45,6 +43,5 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         User.create(form.username.data, form.email.data, form.password.data)
-        flash('Account Created, please sign in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='register', form=form)
