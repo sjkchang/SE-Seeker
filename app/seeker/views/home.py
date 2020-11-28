@@ -1,10 +1,9 @@
 from __future__ import print_function
 from flask import current_app as app
-from flask import render_template, url_for, redirect, flash, request
-from flask_login import login_user, logout_user, current_user, login_required, login_manager
-from .. import db, login_manager, bcrypt
+from flask import render_template
+from flask_login import current_user
 
-
+@app.route('/')
 @app.route('/home')
 def home():
     """

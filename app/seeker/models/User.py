@@ -20,16 +20,25 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), index=True, unique=True, nullable=False)
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
-    # internship = db.relationship('UserInternship', backref='Poster', lazy=True)
+    #internships = db.relationship('Internship', backref='Poster', lazy=True)
 
     def __repr__(self):
-        return '<user: {}, email: {}>'.format(self.username, self.email)
+        return f'<user: {self.username}, email: {self.email}>'
 
     @classmethod
     def create(cls, username, email, password):
         password_hash = bcrypt.generate_password_hash(password)
         user = User(username=username, email=email, password_hash=password_hash)
         db.session.add(user)
+        db.session.commit()
+
+    @classmethod
+    def edit(cls, id, username, email, new_password):
+        user = db.session.query(User).filter_by(id=id).first()
+        password_hash = bcrypt.generate_password_hash(new_password)
+        user.username = username
+        user.email = email
+        user.password_hash = password_hash
         db.session.commit()
 
     @classmethod
@@ -51,6 +60,14 @@ class User(db.Model, UserMixin):
     @classmethod
     def passwordMatches(self, email, password):
         tempUser = db.session.query(User).filter_by(email=email).first()
+        if tempUser and bcrypt.check_password_hash(tempUser.password_hash, password):
+            return True
+        else:
+            return False
+
+    @classmethod
+    def passwordMatchesID(self, id, password):
+        tempUser = db.session.query(User).filter_by(id=id).first()
         if tempUser and bcrypt.check_password_hash(tempUser.password_hash, password):
             return True
         else:

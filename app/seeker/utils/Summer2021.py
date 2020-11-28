@@ -2,8 +2,6 @@ from __future__ import print_function
 
 import requests
 from bs4 import BeautifulSoup
-from flask import current_app as app
-from .. import db, login_manager, bcrypt
 from ..models.Internship import Internship
 
 
@@ -27,8 +25,8 @@ class Summer2021:
                 cols_link = cols_link.attrs['href']
                 cols = cols_text.append(cols_link)
                 data.append(cols_text)
-            except:
-                None
+            except Exception:
+                pass
 
         for row in data:
             if not Internship.alreadyExists(row[3]):

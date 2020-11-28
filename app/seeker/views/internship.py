@@ -5,12 +5,10 @@ The url routes that render html templates, and handles forms and database manipu
 """
 from __future__ import print_function
 
-import requests
-from bs4 import BeautifulSoup
 from flask import current_app as app
-from flask import render_template, url_for, redirect, flash, request
-from flask_login import login_user, logout_user, current_user, login_required, login_manager
-from .. import db, login_manager, bcrypt
+from flask import render_template, url_for, redirect
+from flask_login import current_user, login_required
+from .. import db
 from ..forms.InternshipForm import InternshipForm
 from ..models.Internship import Internship
 
@@ -20,6 +18,7 @@ from ..models.Internship import Internship
 def add_internship():
     form = InternshipForm()
     if form.validate_on_submit():
+        print(current_user)
         Internship.create(company=form.company.data, term=form.term.data, year=form.year.data, location=form.location.data,
                           additional_information=form.additional_information.data, link=form.url.data)
         return redirect(url_for('home'))

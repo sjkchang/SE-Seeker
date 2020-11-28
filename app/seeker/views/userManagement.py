@@ -1,8 +1,8 @@
 from __future__ import print_function
 from flask import current_app as app
-from flask import render_template, url_for, redirect, flash, request
+from flask import render_template, url_for, redirect
 from flask_login import login_user, logout_user, current_user, login_required, login_manager
-from .. import db, login_manager, bcrypt
+from .. import login_manager, bcrypt
 from ..forms.LoginForm import LoginForm
 from ..forms.RegistrationForm import RegistrationForm
 from ..forms.UpdateAccountForm import UpdateAccountForm
@@ -45,3 +45,14 @@ def register():
         User.create(form.username.data, form.email.data, form.password.data)
         return redirect(url_for('login'))
     return render_template('register.html', title='register', form=form)
+
+
+@app.route('/edit-account', methods=['GET', 'POST'])
+def editAccount():
+    if not current_user.is_authenticated:
+        redirect(url_for('home'))
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        User.edit(current_user.id, form.username.data, form.email.data, form.password.data)
+        return redirect(url_for('login'))
+    return render_template('editAccount.html', title='Edit Account', form=form)

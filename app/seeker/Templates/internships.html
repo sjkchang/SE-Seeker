@@ -1,16 +1,23 @@
 {% extends "main.html" %}
 {% block content %}
 <div>
-    {% for internship in internships %}
-        <p>
-            {{internship.company}}
-            {{internship.term}}
-            {{internship.year}}
-            {{internship.location}}
-            {{internship.additional_information}}
-            {{internship.link}}
-        </p>
-    {% endfor %}
+    <table>
+        <tr>
+            <td><h3>Company</h3></td>
+            <td><h3>Date</h3></td>
+            <td><h3>Locations</h3></td>
+            <td><h3>Additional Information</h3></td>
+        </tr>
+        {% for internship in internships %}
+            <tr>
+                <td><a href="{{internship.link}}">{{internship.company}}</a></td>
+                <td>{{internship.term}}  {{internship.year}}</td>
+                <td>{{internship.location}}</td>
+                <td>{{internship.additional_information}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
 </div>
 
 {% endblock content %}
