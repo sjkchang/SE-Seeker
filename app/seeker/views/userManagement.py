@@ -55,4 +55,4 @@ def editAccount():
     if form.validate_on_submit():
         User.edit(current_user.id, form.username.data, form.email.data, form.password.data)
         return redirect(url_for('login'))
-    return render_template('editAccount.html', title='Edit Account', form=form)
+    return render_template('editAccount.html', title='Edit Account', form=form, current_user=current_user)

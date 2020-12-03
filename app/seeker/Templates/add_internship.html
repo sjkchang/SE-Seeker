@@ -1,31 +1,67 @@
 {% extends "main.html" %}
 {% block content %}
-<div>
+<div class="col-md-8">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        <fieldset>
-            <legend>Add Internship</legend>
-            <div>
-                <div>
-                    {{ form.company(placeholder="Company") }}
-                </div>
-                <div>
-                    {{ form.term(placeholder="term") }}
-                </div>
-                <div>
-                    {{ form.year(placeholder="Year") }}
-                </div>
-                <div>
-                    {{ form.location(placeholder="Location") }}
-                </div>
-                <div>
-                    {{ form.additional_information(placeholder="Add Info") }}
-                </div>
-                <div>
-                    {{ form.url(placeholder="URL") }}
-                </div>
-        </div>
-
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-navy">Add Internship</legend>
+                <div class=form-group">
+                    {% if form.company.errors %}
+                        {{ form.company(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.company.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.company(placeholder="Company", class="form-control  form-control-sm") }}
+                    {% endif %}
+                    <br>
+                    {% if form.term.errors %}
+                        {{ form.term(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.term.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.term(placeholder="Term", class="form-control  form-control-sm") }}
+                    {% endif %}
+                    <br>
+                    <div class=form-group">
+                        {% if form.year.errors %}
+                        {{ form.year(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.year.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.year(placeholder="Year", class="form-control  form-control-sm") }}
+                        {% endif %}
+                    </div>
+                    <br>
+                    <div class=form-group">
+                        {{ form.location(placeholder="Location", class="form-control  form-control-sm") }}
+                    </div>
+                    <br>
+                    <div class=form-group">
+                        {{ form.additional_information(placeholder="Additional Info", class="form-control  form-control-sm") }}
+                    </div>
+                    <br>
+                    <div class=form-group">
+                        {% if form.url.errors %}
+                        {{ form.url(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.url.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.url(placeholder="URL", class="form-control  form-control-sm") }}
+                        {% endif %}
+                    </div>
+            </div>
         </fieldset>
         {{ form.submit() }}
     </form>

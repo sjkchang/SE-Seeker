@@ -21,7 +21,7 @@ def add_internship():
         print(current_user)
         Internship.create(company=form.company.data, term=form.term.data, year=form.year.data, location=form.location.data,
                           additional_information=form.additional_information.data, link=form.url.data)
-        return redirect(url_for('home'))
+        return redirect(url_for('internships'))
     return render_template('add_internship.html', form=form, title='Add Internship')
 
 

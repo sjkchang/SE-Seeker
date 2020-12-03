@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), index=True, unique=True, nullable=False)
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
-    #internships = db.relationship('Internship', backref='Poster', lazy=True)
+    # internships = db.relationship('Internship', backref='Poster', lazy=True)
 
     def __repr__(self):
         return f'<user: {self.username}, email: {self.email}>'

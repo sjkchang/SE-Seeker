@@ -5,7 +5,7 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4 text-navy">Register</legend>
+                <legend class="border-bottom mb-4 text-navy">Edit Account</legend>
                 <div class=form-group">
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-sm is-invalid") }}
@@ -15,7 +15,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.username(placeholder="Username", class="form-control  form-control-sm") }}
+                        {{ form.username(placeholder="New Username", class="form-control  form-control-sm") }}
                     {% endif %}
                 </div>
                 <br>
@@ -28,7 +28,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.email(placeholder="Email", class="form-control  form-control-sm") }}
+                        {{ form.email(placeholder="New Email", class="form-control  form-control-sm") }}
                     {% endif %}
                 </div>
                 <br>
@@ -54,7 +54,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.password(placeholder="Password", class="form-control  form-control-sm") }}
+                        {{ form.password(placeholder="New Password", class="form-control  form-control-sm") }}
                     {% endif %}
                 </div>
                 <br>
@@ -67,17 +67,12 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.confirmPassword(placeholder="Confirm Password", class="form-control  form-control-sm") }}
+                        {{ form.confirmPassword(placeholder="Confirm New Password", class="form-control  form-control-sm") }}
                     {% endif %}
                 </div>
             </fieldset>
             {{ form.submit(class="btn btn-outline-dark") }}
         </form>
-    </div>
-    <div class="border-top pt-3 text-white">
-        <small>
-            Already have an account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
     </div>
 </div>
 {% endblock content %}

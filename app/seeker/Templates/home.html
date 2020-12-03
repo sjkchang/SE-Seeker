@@ -2,7 +2,6 @@
 {% block content %}
 <div class="col-md-12">
     <h1>Welcome to Stem Seeker</h1>
-    <a href="{{link}}">this is to test if a string can be used as a link in jinja2 templates</a>
     {% if current_user.username %}
         <p>Username: {{ current_user.username }}</p>
     {% else %}
