@@ -33,6 +33,11 @@ class User(db.Model, UserMixin):
         db.session.commit()
 
     @classmethod
+    def delete(cls, current_user):
+        db.session.delete(current_user)
+        db.session.commit()
+
+    @classmethod
     def edit(cls, id, username, email, new_password):
         user = db.session.query(User).filter_by(id=id).first()
         password_hash = bcrypt.generate_password_hash(new_password)

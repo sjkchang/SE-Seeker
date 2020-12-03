@@ -6,6 +6,7 @@ from .. import login_manager, bcrypt
 from ..forms.LoginForm import LoginForm
 from ..forms.RegistrationForm import RegistrationForm
 from ..forms.UpdateAccountForm import UpdateAccountForm
+from ..forms.DeleteForm import DeleteForm
 from ..models.User import User
 
 
@@ -54,5 +55,16 @@ def editAccount():
     form = UpdateAccountForm()
     if form.validate_on_submit():
         User.edit(current_user.id, form.username.data, form.email.data, form.password.data)
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
     return render_template('editAccount.html', title='Edit Account', form=form, current_user=current_user)
+
+
+@app.route('/delete-account', methods=['GET', 'POST'])
+def deleteAccount():
+    if not current_user.is_authenticated:
+        redirect(url_for('home'))
+    deleteForm = DeleteForm()
+    if deleteForm.validate_on_submit():
+        User.delete(current_user)
+        return redirect(url_for('login'))
+    return render_template('delete_account.html', title='Delete Account', current_user=current_user, deleteForm=deleteForm)

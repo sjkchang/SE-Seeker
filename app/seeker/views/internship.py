@@ -28,4 +28,4 @@ def add_internship():
 @app.route('/internships')
 def internships():
     internships = db.session.query(Internship).all()
-    return render_template('internships.html', internships=internships)
+    return render_template('internships.html', internships=internships, title='Internships')

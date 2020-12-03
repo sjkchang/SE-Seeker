@@ -4,6 +4,7 @@
     <h1>Welcome to Stem Seeker</h1>
     {% if current_user.username %}
         <p>Username: {{ current_user.username }}</p>
+        <p>Email: {{ current_user.email }}</p>
     {% else %}
         <p>No current user</p>
     {% endif %}
