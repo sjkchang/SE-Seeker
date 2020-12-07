@@ -14,13 +14,16 @@ login_manager = LoginManager()
 bcrypt = Bcrypt()
 
 
-def create_app(testing):
+def create_app(testing, reset):
     """
     Initializes flask app
     Parameters
     ----------
     testing
         boolean to determine if the app is actually being deployed or if it is running a test
+
+    reset
+        boolean to determine if database should be wiped and reinitialized
     """
     app = Flask(__name__, instance_relative_config=False, template_folder='templates')
 
@@ -35,9 +38,13 @@ def create_app(testing):
 
     with app.app_context():
         # Include our routes
-        from .routes import home, internship, userManagement
+        from .views import home, internship, userManagement
         from .models.Internship import Internship
-        #db.drop_all()
-        #db.create_all()
+        from .utils.Summer2021 import Summer2021
+
+        if reset:
+            db.drop_all()
+            db.create_all()
+            Summer2021.add_internships()
 
         return app
