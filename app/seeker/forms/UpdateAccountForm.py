@@ -6,8 +6,11 @@ from ..models.User import User
 
 
 class UpdateAccountForm(FlaskForm):
-    """
-    A update account FlaskForm
+    """Form used to gather user input data to change their account information
+
+    Raises:
+        ValidationError: Raise a validation error if the username or email is already taken by another
+        user, or if the old password the user entered doesnt match their current password
     """
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])

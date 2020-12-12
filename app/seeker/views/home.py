@@ -7,6 +7,6 @@ from flask_login import current_user
 @app.route('/home')
 def home():
     """
-    Route for the home page
+    Route for the home page, Home page displays current user info and a welcome.
     """
     return render_template('home.html', current_user=current_user)

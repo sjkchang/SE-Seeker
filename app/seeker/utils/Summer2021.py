@@ -7,6 +7,8 @@ from ..models.Internship import Internship
 
 class Summer2021:
     def add_internships():
+        """Function to scrape internship information from the web, and add it all to the database
+        """
         result = requests.get("https://github.com/Pitt-CSC/Summer2021-Internships")
         src = result.content
         soup = BeautifulSoup(src, 'lxml')

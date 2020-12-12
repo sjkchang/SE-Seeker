@@ -2,6 +2,10 @@ from .. import db
 
 
 class Internship(db.Model):
+    """SQLALchemy database model to store Internship data
+    """
+
+
     id = db.Column(db.Integer, primary_key=True)
     company = db.Column(db.String(100), index=True, nullable=False)
     term = db.Column(db.String(100), index=True, nullable=False)
@@ -9,7 +13,6 @@ class Internship(db.Model):
     location = db.Column(db.String(100), index=True, nullable=False)
     additional_information = db.Column(db.String(800), index=True, nullable=True)
     link = db.Column(db.String(100), index=True, nullable=False)
-    # user = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=True)
 
     def __repr__(self):
         return f'<Company: {self.company}, Date: {self.term} {self.year}, Location: {self.location}, Link: {self.link}'

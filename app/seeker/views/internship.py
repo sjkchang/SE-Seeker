@@ -16,6 +16,8 @@ from ..models.Internship import Internship
 @app.route('/add-internship', methods=['GET', 'POST'])
 @login_required
 def add_internship():
+    """Page for adding an internship
+    """
     form = InternshipForm()
     if form.validate_on_submit():
         print(current_user)
@@ -27,5 +29,7 @@ def add_internship():
 
 @app.route('/internships')
 def internships():
+    """Page that displays a list of all internships
+    """
     internships = db.session.query(Internship).all()
     return render_template('internships.html', internships=internships, title='Internships')

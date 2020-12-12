@@ -5,8 +5,11 @@ from ..models.User import User
 
 
 class LoginForm(FlaskForm):
-    """
-    A login FlaskForm
+    """Form used to gather data for user login
+
+    Raises:
+        ValidationError: Raises validation error if password is incorecct
+        or if the email entered isn't assigned to an account
     """
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=8, max=20)])

@@ -5,8 +5,11 @@ from ..models.User import User
 
 
 class RegistrationForm(FlaskForm):
-    """
-    A registration FlaskForm
+    """Form used to gather user input data for User registration
+
+    Raises:
+        ValidationError: Raises a validation error if the username or email
+        are already assigned to another user
     """
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])

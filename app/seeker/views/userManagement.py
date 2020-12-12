@@ -12,8 +12,7 @@ from ..models.User import User
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Route for the login page
+    """Page for loging in
     """
     form = LoginForm()
     if form.validate_on_submit():
@@ -27,8 +26,7 @@ def login():
 @app.route('/logout')
 @login_required
 def logout():
-    """
-    Route to logout user, redirects to login
+    """Route for login out
     """
     logout_user()
     return redirect(url_for('login'))
@@ -36,8 +34,7 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    """
-    Route for the registration page
+    """Page for Registering new user
     """
     if current_user.is_authenticated:
         redirect(url_for('home'))
@@ -50,6 +47,8 @@ def register():
 
 @app.route('/edit-account', methods=['GET', 'POST'])
 def editAccount():
+    """Page for editing an account
+    """
     if not current_user.is_authenticated:
         redirect(url_for('home'))
     form = UpdateAccountForm()
@@ -61,6 +60,8 @@ def editAccount():
 
 @app.route('/delete-account', methods=['GET', 'POST'])
 def deleteAccount():
+    """Page to delete an account
+    """
     if not current_user.is_authenticated:
         redirect(url_for('home'))
     deleteForm = DeleteForm()

@@ -6,6 +6,15 @@ from ..models.Internship import Internship
 
 
 class InternshipForm(FlaskForm):
+    
+    """Form used to gather user input to add an internship 
+
+    Raises:
+        ValidationError: Raises validation error if user inputs an 
+        invalid term or year, or if an internship with the url they 
+        entered already exists in the database
+    """
+    
     company = StringField('Company', validators=[DataRequired(message="Company Name is Required")])
     term = StringField('Term', validators=[DataRequired(message="Enter Internship Term(ex. Summer, Fall, ect")])
     year = IntegerField('Year', validators=[DataRequired(message="Enter Valid Internship Year")])
