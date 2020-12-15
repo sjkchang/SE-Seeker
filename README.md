@@ -22,13 +22,13 @@ Using Terminal, navigate to project directory, install required libraries, and r
 ### MAC
 ```bash
 cd *Path to unzipped project download location*/SE-Seeker/app
-pip3 install -r requirments.txt
+pip3 install -r requirements.txt
 python3 run.py
 ```
 ### Windows
 ```bash
 cd *Path to unzipped project download location*/SE-Seeker/app
-py -m pip install -r requirments.txt
+py -m pip install -r requirements.txt
 py run.py
 ```
 
